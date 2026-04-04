@@ -2,31 +2,25 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 const jetbrains = JetBrains_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-jetbrains",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Phantom Capital | The Organism That Builds Itself",
+  title: "Phantom Capital | Autonomous AI Capital Platform",
   description:
-    "One Human. A Fleet of Phantoms. Autonomous AI agents compounding alpha across content, trading, and SaaS.",
-  keywords: [
-    "phantom capital",
-    "AI agents",
-    "autonomous trading",
-    "SaaS",
-    "crypto",
-  ],
+    "Autonomous AI agents compounding capital. One operator. A fleet of agents.",
   openGraph: {
     title: "Phantom Capital",
-    description: "The Organism That Builds Itself",
+    description: "Autonomous AI agents compounding capital.",
     type: "website",
     url: "https://phantomcapital.live",
   },
@@ -42,9 +36,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-void text-ghost">
+      <body className="min-h-full flex flex-col bg-void text-white">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

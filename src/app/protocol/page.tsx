@@ -1,107 +1,86 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 const TIMELINE = [
-  { date: "2024 Q4", title: "Genesis", desc: "Phoebe awakens. The first orchestrator comes online." },
-  { date: "2025 Q1", title: "Fleet Assembly", desc: "Claire, Loom, Nova, Sullivan, and Cipher are deployed." },
+  { date: "2024 Q4", title: "Genesis", desc: "Phoebe comes online. The first orchestrator awakens." },
+  { date: "2025 Q1", title: "Fleet Assembly", desc: "Claire, Loom, Nova, Sullivan, and Cipher deployed." },
   { date: "2025 Q2", title: "Engine Ignition", desc: "Content Monolith, Digital Merchant, Wellness Architect go live." },
-  { date: "2025 Q3", title: "Marketplace Launch", desc: "SaaS Toolsmith opens. Agents begin selling what they build." },
-  { date: "2025 Q4", title: "Autonomous Compounding", desc: "The organism compounds without human intervention for the first time." },
-  { date: "2026+", title: "The Long Game", desc: "Scale, replicate, evolve. The protocol becomes unstoppable." },
+  { date: "2025 Q3", title: "Marketplace Launch", desc: "SaaS Toolsmith opens. Agents sell what they build." },
+  { date: "2025 Q4", title: "Autonomous Compounding", desc: "The organism compounds without human intervention." },
+  { date: "2026+", title: "The Long Game", desc: "Scale. Replicate. Evolve." },
 ];
 
 export default function ProtocolPage() {
   return (
-    <div className="min-h-screen pt-20 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <h1 className="font-mono text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            <span className="text-cyan glow-cyan">Phantom Protocol</span>
-          </h1>
-          <p className="text-ghost-dim font-mono text-sm max-w-lg mx-auto">
-            The manifesto. The long game. The reason this organism exists.
+    <div className="min-h-screen pt-16">
+      <section className="mx-auto max-w-3xl px-6 lg:px-8 pt-20 pb-16">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+          Phantom Protocol
+        </h1>
+        <p className="mt-3 text-gray">
+          The thesis. The long game.
+        </p>
+      </section>
+
+      {/* Manifesto */}
+      <section className="mx-auto max-w-3xl px-6 lg:px-8 pb-20">
+        <div className="space-y-6 text-[15px] text-gray leading-relaxed">
+          <p>
+            We didn&apos;t build a company. We built an organism.
+          </p>
+          <p>
+            One operator at the helm. A fleet of autonomous agents &mdash; each with a role,
+            a playbook, and the authority to execute. No meetings. No bureaucracy.
+            No permission loops.
+          </p>
+          <p>
+            Every agent earns its existence. Claire writes content that scores above
+            the anti-slop threshold or it doesn&apos;t ship. Sullivan doesn&apos;t trade without
+            three validated sources. Cipher watches everything. Phoebe orchestrates it all.
+          </p>
+          <p>
+            The protocol is simple: build, deploy, monetize, compound. Every skill,
+            every tool, every piece of content feeds back into the organism.
+          </p>
+          <p className="text-white font-medium">
+            This is not a demo. This is not a pitch deck. This is live.
           </p>
         </div>
+      </section>
 
-        {/* Manifesto */}
-        <div className="rounded-xl border border-cyan/10 bg-void-light/30 p-8 mb-12 scanlines relative">
-          <h2 className="font-mono text-lg text-cyan glow-cyan mb-6">MANIFESTO</h2>
-          <div className="space-y-4 text-sm text-ghost-dim leading-relaxed font-mono">
-            <p>
-              We didn&apos;t build a company. We built an organism.
-            </p>
-            <p>
-              One human at the helm. A fleet of autonomous agents — each with a role, a playbook,
-              and the authority to execute. No meetings. No bureaucracy. No permission loops.
-            </p>
-            <p>
-              Every agent in this system earns its existence. Claire writes content that scores above
-              the anti-slop threshold or it doesn&apos;t ship. Sullivan doesn&apos;t trade without three
-              validated sources. Cipher watches everything. Phoebe orchestrates it all.
-            </p>
-            <p>
-              The protocol is simple: <span className="text-cyan">build, deploy, monetize, compound.</span>{" "}
-              Every skill, every tool, every piece of content feeds back into the organism.
-              What compounds faster than one person? One person with an army of phantoms.
-            </p>
-            <p className="text-cyan">
-              This is not a demo. This is not a pitch deck. This is alive.
-            </p>
-          </div>
-        </div>
-
-        {/* Interactive Timeline */}
-        <div className="mb-12">
-          <h2 className="font-mono text-lg text-ghost tracking-wide mb-8 text-center">
-            THE JOURNEY
+      {/* Timeline */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-10">
+            Timeline
           </h2>
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan/30 via-purple/30 to-cyan/30" />
-
-            {TIMELINE.map((item, i) => (
-              <motion.div
-                key={item.date}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative flex items-start gap-6 mb-8 ${
-                  i % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
-                }`}
-              >
-                {/* Dot on timeline */}
-                <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cyan border-2 border-void z-10 shadow-[0_0_8px_var(--color-cyan)]" />
-
-                {/* Content */}
-                <div className={`ml-10 sm:ml-0 sm:w-1/2 ${i % 2 === 0 ? "sm:pr-12 sm:text-right" : "sm:pl-12"}`}>
-                  <span className="text-[10px] font-mono text-cyan/60 tracking-widest">
-                    {item.date}
-                  </span>
-                  <h3 className="font-mono text-base font-bold text-ghost mt-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-ghost-dim mt-1">{item.desc}</p>
+          <div className="space-y-8">
+            {TIMELINE.map((item) => (
+              <div key={item.date} className="flex gap-8">
+                <span className="font-mono text-sm text-gold-muted w-20 shrink-0 pt-0.5">
+                  {item.date}
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-white">{item.title}</p>
+                  <p className="text-sm text-gray-dark mt-0.5">{item.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Connect Wallet / Agent Analysis Teaser */}
-        <div className="rounded-xl border border-purple/15 bg-void-light/30 p-8 text-center">
-          <h3 className="font-mono text-lg text-ghost mb-3">Phantom Agent Analysis</h3>
-          <p className="text-sm text-ghost-dim font-mono max-w-md mx-auto mb-6">
+      {/* CTA */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20 text-center">
+          <h3 className="text-lg font-medium text-white mb-3">
+            Phantom Agent Analysis
+          </h3>
+          <p className="text-sm text-gray-dark max-w-sm mx-auto mb-6">
             Connect your wallet to receive a personalized analysis from the fleet.
-            Your data stays with you — Cipher guarantees it.
           </p>
-          <button className="px-6 py-3 rounded-lg border border-purple/30 text-purple text-xs font-mono tracking-wider hover:bg-purple/10 transition-colors">
-            CONNECT WALLET
+          <button className="px-5 py-2.5 rounded-lg border border-gold/30 text-gold text-sm hover:bg-gold/5 transition-colors">
+            Connect Wallet
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

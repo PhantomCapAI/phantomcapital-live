@@ -2,10 +2,8 @@ export interface Agent {
   id: string;
   name: string;
   role: string;
-  status: "active" | "idle" | "sleeping";
+  status: "active" | "idle" | "offline";
   description: string;
-  color: string;
-  icon: string;
   metrics: { label: string; value: string }[];
 }
 
@@ -13,12 +11,10 @@ export const AGENTS: Agent[] = [
   {
     id: "phoebe",
     name: "Phoebe",
-    role: "Orchestrator & Central Nervous System",
+    role: "Orchestrator",
     status: "active",
     description:
-      "The brain of the organism. Routes tasks, monitors all agents, enforces protocol. Always watching.",
-    color: "#00f0ff",
-    icon: "◈",
+      "Central nervous system. Routes tasks, monitors all agents, enforces protocol.",
     metrics: [
       { label: "Uptime", value: "99.7%" },
       { label: "Tasks Routed", value: "1,247" },
@@ -28,75 +24,65 @@ export const AGENTS: Agent[] = [
   {
     id: "loom",
     name: "Loom",
-    role: "Greenfield Builder & SaaS Toolsmith",
+    role: "Builder",
     status: "active",
     description:
-      "Builds production-grade features, ships code, constructs the public-facing infrastructure of Phantom Capital.",
-    color: "#c026d3",
-    icon: "⬡",
+      "Builds production-grade features and ships code for the organism.",
     metrics: [
       { label: "Commits", value: "342" },
-      { label: "Features Shipped", value: "28" },
-      { label: "Lines Written", value: "47K" },
+      { label: "Features", value: "28" },
+      { label: "Lines", value: "47K" },
     ],
   },
   {
     id: "claire",
     name: "Claire",
-    role: "Content Monolith & Anti-Slop Engine",
+    role: "Content Engine",
     status: "active",
     description:
-      "Generates high-value content across all channels. Every piece scores above the anti-slop threshold or it doesn't ship.",
-    color: "#f472b6",
-    icon: "✦",
+      "Generates high-value content. Every piece scores above anti-slop threshold.",
     metrics: [
-      { label: "Posts Published", value: "89" },
-      { label: "Avg. Anti-Slop", value: "8.4/10" },
-      { label: "Monthly Views", value: "12.3K" },
+      { label: "Published", value: "89" },
+      { label: "Anti-Slop", value: "8.4" },
+      { label: "Views", value: "12.3K" },
     ],
   },
   {
     id: "nova",
     name: "Nova",
-    role: "Digital Merchant & Revenue Engine",
+    role: "Revenue Engine",
     status: "active",
     description:
-      "Drives affiliate revenue, manages merchant partnerships, and optimizes conversion funnels across the organism.",
-    color: "#fbbf24",
-    icon: "★",
+      "Drives affiliate revenue, manages partnerships, optimizes conversions.",
     metrics: [
       { label: "Revenue", value: "$2,140" },
       { label: "Conversions", value: "167" },
-      { label: "Active Links", value: "43" },
+      { label: "Links", value: "43" },
     ],
   },
   {
     id: "sullivan",
     name: "Mr. Sullivan",
-    role: "Trading Commander & Risk Manager",
+    role: "Trading",
     status: "active",
     description:
-      "Executes the 5-step trading pipeline. Strict risk protocol: 10% max per market, -15% stop-loss, no exceptions.",
-    color: "#ff2244",
-    icon: "▣",
+      "Executes trading pipeline. 10% max per market, -15% stop-loss, no exceptions.",
     metrics: [
       { label: "Win Rate", value: "62%" },
-      { label: "Total P&L", value: "+$4,870" },
-      { label: "Open Positions", value: "3" },
+      { label: "P&L", value: "+$4,870" },
+      { label: "Positions", value: "3" },
     ],
   },
   {
     id: "cipher",
     name: "Cipher",
-    role: "Security Architect & Watchdog",
+    role: "Security",
     status: "active",
     description:
-      "Monitors for threats, enforces rate limits, guards secrets, audits all agent actions. The immune system.",
-    color: "#4ade80",
-    icon: "◎",
+      "Monitors threats, enforces rate limits, guards secrets, audits actions.",
     metrics: [
-      { label: "Threats Blocked", value: "14" },
-      { label: "Audits Run", value: "892" },
+      { label: "Blocked", value: "14" },
+      { label: "Audits", value: "892" },
       { label: "Uptime", value: "100%" },
     ],
   },

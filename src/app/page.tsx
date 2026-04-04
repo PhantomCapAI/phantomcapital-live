@@ -1,97 +1,107 @@
-import { PhantomCoreOrb } from "@/components/PhantomCoreOrb";
-import { OrganismTicker } from "@/components/OrganismTicker";
-import { AgentRoster } from "@/components/AgentRoster";
+import Image from "next/image";
+import Link from "next/link";
+import { AGENTS } from "@/lib/agents";
+
+const METRICS = [
+  { label: "Phoebe Uptime", value: "99.7%", mono: true },
+  { label: "Active Agents", value: "6", mono: true },
+  { label: "Revenue (MTD)", value: "$2,140", mono: true },
+  { label: "Sullivan P&L", value: "+$4,870", mono: true },
+  { label: "Content Published", value: "89", mono: true },
+  { label: "Marketplace Skills", value: "14", mono: true },
+];
 
 export default function DashboardPage() {
   return (
-    <div className="relative min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center px-4 pt-8 pb-4">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan/[0.02] via-transparent to-transparent pointer-events-none" />
-
-        {/* Tagline */}
-        <div className="text-center mb-2 z-10">
-          <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-            <span className="text-cyan glow-cyan">The Organism</span>
-            <br />
-            <span className="text-ghost">That Builds Itself</span>
-          </h1>
-          <p className="mt-4 text-sm sm:text-base text-ghost-dim font-mono max-w-md mx-auto">
-            One Human. A Fleet of Phantoms.
-          </p>
-        </div>
-
-        {/* 3D Phantom Core Orb */}
-        <PhantomCoreOrb />
-
-        {/* Sub-tagline */}
-        <p className="text-xs font-mono text-ghost-dim text-center max-w-lg mt-2 leading-relaxed">
-          Autonomous AI agents compounding alpha across content, trading, SaaS, and commerce.
-          <br />
-          <span className="text-cyan/60">Everything you see here is alive.</span>
+    <div className="min-h-screen pt-16">
+      {/* Hero */}
+      <section className="flex flex-col items-center justify-center px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+        <Image
+          src="/logo.jpg"
+          alt="Phantom Capital"
+          width={160}
+          height={160}
+          priority
+          className="rounded-2xl mb-10"
+        />
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-center">
+          Phantom Capital
+        </h1>
+        <p className="mt-5 text-lg text-gray text-center max-w-md">
+          Autonomous AI agents compounding capital.
         </p>
       </section>
 
-      {/* Live Organism Status Ticker */}
-      <OrganismTicker />
-
-      {/* Agent Roster */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-1 h-6 bg-cyan rounded-full shadow-[0_0_8px_var(--color-cyan)]" />
-          <h2 className="font-mono text-lg text-ghost tracking-wide">
-            AGENT ROSTER
-          </h2>
-          <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
-        </div>
-        <AgentRoster />
-      </section>
-
-      {/* Quick Links to Engines */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-1 h-6 bg-purple rounded-full shadow-[0_0_8px_var(--color-purple)]" />
-          <h2 className="font-mono text-lg text-ghost tracking-wide">
-            ACTIVE ENGINES
-          </h2>
-          <div className="flex-1 h-px bg-gradient-to-r from-purple/20 to-transparent" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { name: "Content Monolith", agent: "Claire", color: "#f472b6", desc: "Anti-slop content at scale" },
-            { name: "Digital Merchant", agent: "Nova", color: "#fbbf24", desc: "Affiliate revenue engine" },
-            { name: "Wellness Architect", agent: "System", color: "#4ade80", desc: "DailyWisdomHub pipeline" },
-            { name: "SaaS Toolsmith", agent: "Loom", color: "#c026d3", desc: "Marketplace & agent skills" },
-          ].map((engine) => (
-            <div
-              key={engine.name}
-              className="rounded-lg border border-white/5 bg-void-light/40 p-4 hover:border-cyan/15 transition-colors group"
-            >
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono mb-3"
-                style={{
-                  backgroundColor: `${engine.color}15`,
-                  border: `1px solid ${engine.color}25`,
-                  color: engine.color,
-                }}
-              >
-                ⚙
-              </div>
-              <h3 className="font-mono text-sm font-semibold text-ghost mb-1">
-                {engine.name}
-              </h3>
-              <p className="text-[11px] text-ghost-dim mb-2">{engine.desc}</p>
-              <p className="text-[10px] font-mono" style={{ color: engine.color }}>
-                Operated by {engine.agent}
+      {/* Metrics */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-border rounded-xl overflow-hidden border border-border">
+          {METRICS.map((m) => (
+            <div key={m.label} className="bg-void px-5 py-6 text-center">
+              <p className="font-mono text-2xl font-semibold text-white">
+                {m.value}
               </p>
+              <p className="mt-1.5 text-xs text-gray-dark">{m.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Scanline overlay for the whole page */}
-      <div className="fixed inset-0 pointer-events-none scanlines z-[60]" />
+      {/* Agent Roster */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-8">
+          Agent Fleet
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {AGENTS.map((agent) => (
+            <div
+              key={agent.id}
+              className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4"
+            >
+              <div
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ backgroundColor: agent.status === "active" ? "#22C55E" : "#6B7280" }}
+              />
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  {agent.name}
+                </p>
+                <p className="text-xs text-gray-dark truncate">{agent.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Engines quick links */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8 py-20">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-8">
+            Active Engines
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { name: "Content Monolith", agent: "Claire", desc: "Anti-slop content at scale" },
+              { name: "Digital Merchant", agent: "Nova", desc: "Affiliate revenue engine" },
+              { name: "Wellness Architect", agent: "System", desc: "DailyWisdomHub pipeline" },
+              { name: "SaaS Toolsmith", agent: "Loom", desc: "Marketplace & agent skills" },
+            ].map((engine) => (
+              <Link
+                key={engine.name}
+                href="/engines"
+                className="rounded-xl border border-border bg-surface/30 p-5 hover:border-border-light transition-colors group"
+              >
+                <h3 className="text-sm font-medium text-white group-hover:text-gold transition-colors">
+                  {engine.name}
+                </h3>
+                <p className="text-xs text-gray-dark mt-1">{engine.desc}</p>
+                <p className="text-xs text-gray-darker mt-3">
+                  Operated by {engine.agent}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

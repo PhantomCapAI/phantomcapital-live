@@ -1,46 +1,36 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const ENGINES = [
   {
     name: "Content Monolith",
     agent: "Claire",
-    color: "#f472b6",
-    icon: "✦",
-    description: "Anti-slop content engine. Every piece scores 7+ or it doesn't ship. Blog, social, video scripts — all channels.",
-    features: ["Content Feed", "Anti-Slop Scoring", "Generate Live Demo"],
+    description:
+      "Anti-slop content engine. Every piece scores 7+ or it doesn't ship. Blog, social, video scripts — all channels.",
+    features: ["Content Feed", "Anti-Slop Scoring", "Multi-Channel"],
     status: "Active",
-    link: "/engines",
   },
   {
     name: "Digital Merchant",
     agent: "Nova",
-    color: "#fbbf24",
-    icon: "★",
-    description: "Affiliate revenue engine powering phantomcapital.live. Blog previews, affiliate heatmaps, conversion optimization.",
-    features: ["Blog Previews", "Affiliate Heatmap", "Revenue Tracking"],
+    description:
+      "Affiliate revenue engine powering phantomcapital.live. Conversion optimization, heatmaps, and partner management.",
+    features: ["Affiliate Tracking", "Revenue Analytics", "Conversion Optimization"],
     status: "Active",
-    link: "/engines",
   },
   {
     name: "Wellness Architect",
     agent: "System",
-    color: "#4ade80",
-    icon: "◎",
-    description: "DailyWisdomHub pipeline — curated wisdom, wellness content, subscription teasers.",
-    features: ["Quote Generator", "Subscription Teaser", "Daily Digest"],
+    description:
+      "DailyWisdomHub pipeline — curated wisdom, wellness content, and subscription management.",
+    features: ["Daily Digest", "Subscription Tier", "Content Curation"],
     status: "Active",
-    link: "/engines",
   },
   {
     name: "SaaS Toolsmith",
     agent: "Loom",
-    color: "#c026d3",
-    icon: "⬡",
-    description: "The build engine. Ships production-grade tools, skills, and marketplace products autonomously.",
-    features: ["Skill Builder", "Marketplace Integration", "Auto-Deploy"],
+    description:
+      "The build engine. Ships production-grade tools, skills, and marketplace products autonomously.",
+    features: ["Skill Builder", "Auto-Deploy", "Marketplace Integration"],
     status: "Active",
     link: "/marketplace",
   },
@@ -48,98 +38,63 @@ const ENGINES = [
 
 export default function EnginesPage() {
   return (
-    <div className="min-h-screen pt-20 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-10">
-          <h1 className="font-mono text-2xl sm:text-3xl font-bold tracking-tight">
-            <span className="text-purple glow-purple">Engines</span>
-          </h1>
-          <p className="text-sm text-ghost-dim font-mono mt-2">
-            The neural grid — four autonomous engines driving the organism.
-          </p>
-        </div>
+    <div className="min-h-screen pt-16">
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pt-20 pb-16">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+          Engines
+        </h1>
+        <p className="mt-3 text-gray max-w-lg">
+          Four autonomous engines driving the organism.
+        </p>
+      </section>
 
-        {/* Engine grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {ENGINES.map((engine, i) => (
-            <motion.div
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {ENGINES.map((engine) => (
+            <div
               key={engine.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative rounded-xl border border-white/5 bg-void-light/50 backdrop-blur-sm p-6 hover:border-cyan/15 transition-all"
+              className="rounded-xl border border-border bg-surface/30 p-6 group"
             >
-              {/* Status */}
-              <div className="absolute top-5 right-5 flex items-center gap-1.5">
-                <div
-                  className="w-2 h-2 rounded-full animate-pulse"
-                  style={{ backgroundColor: engine.color }}
-                />
-                <span className="text-[10px] font-mono text-ghost-dim uppercase">
-                  {engine.status}
-                </span>
-              </div>
-
-              {/* Icon + name */}
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
-                  style={{
-                    backgroundColor: `${engine.color}15`,
-                    border: `1px solid ${engine.color}30`,
-                  }}
-                >
-                  {engine.icon}
-                </div>
-                <div>
-                  <h3 className="font-mono text-base font-bold text-ghost">
-                    {engine.name}
-                  </h3>
-                  <p className="text-[11px] font-mono" style={{ color: engine.color }}>
-                    Operated by {engine.agent}
-                  </p>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-base font-medium text-white">
+                  {engine.name}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green" />
+                  <span className="text-xs text-gray-dark">{engine.status}</span>
                 </div>
               </div>
 
-              <p className="text-sm text-ghost-dim leading-relaxed mb-5">
+              <p className="text-sm text-gray leading-relaxed mb-5">
                 {engine.description}
               </p>
 
-              {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {engine.features.map((f) => (
                   <span
                     key={f}
-                    className="text-[10px] font-mono px-2.5 py-1 rounded-full border transition-colors"
-                    style={{
-                      borderColor: `${engine.color}25`,
-                      color: engine.color,
-                    }}
+                    className="text-[11px] px-2.5 py-1 rounded-full border border-border text-gray-dark"
                   >
                     {f}
                   </span>
                 ))}
               </div>
 
-              {/* Link */}
-              <Link
-                href={engine.link}
-                className="text-xs font-mono tracking-wider hover:underline"
-                style={{ color: engine.color }}
-              >
-                EXPLORE →
-              </Link>
-
-              {/* Bottom glow */}
-              <div
-                className="absolute bottom-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ backgroundColor: engine.color }}
-              />
-            </motion.div>
+              <p className="text-xs text-gray-darker">
+                Operated by {engine.agent}
+                {engine.link && (
+                  <>
+                    {" "}&middot;{" "}
+                    <Link href={engine.link} className="text-gold-muted hover:text-gold transition-colors">
+                      View Marketplace
+                    </Link>
+                  </>
+                )}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }
