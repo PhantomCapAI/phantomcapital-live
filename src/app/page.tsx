@@ -78,23 +78,26 @@ export default function DashboardPage() {
           Agent Fleet
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {AGENTS.map((agent) => (
-            <div
-              key={agent.id}
-              className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4 hover:border-[#D4A853]/30 transition-colors"
-            >
+          {AGENTS.map((agent) => {
+            const pfpMap: Record<string, string> = { phoebe: "/phoebe.png", loom: "/loom.png", claire: "/claire.png", nova: "/nova.png", sullivan: "/sullivan.png", cipher: "/cipher.png" };
+            const pfp = pfpMap[agent.id];
+            return (
               <div
-                className="w-2 h-2 rounded-full shrink-0"
-                style={{ backgroundColor: agent.status === "active" ? "#D4A853" : "#6B7280" }}
-              />
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-white truncate">
-                  {agent.name}
-                </p>
-                <p className="text-xs text-gray-dark truncate">{agent.role}</p>
+                key={agent.id}
+                className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4 hover:border-[#D4A853]/30 transition-colors"
+              >
+                {pfp ? (
+                  <img src={pfp} alt={agent.name} className="w-8 h-8 rounded-full object-cover border border-[#D4A853]/40 shrink-0" />
+                ) : (
+                  <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#D4A853" }} />
+                )}
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-white truncate">{agent.name}</p>
+                  <p className="text-xs text-gray-dark truncate">{agent.role}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
