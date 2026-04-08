@@ -33,8 +33,10 @@ export function Navbar() {
             <span
               className="text-sm font-semibold tracking-[0.2em]"
               style={{
-                color: "#D4A853",
-                textShadow: "0 0 12px rgba(212,168,83,0.4), 0 0 30px rgba(212,168,83,0.15)",
+                background: "linear-gradient(135deg, #D4A853 0%, #F5E6A3 50%, #D4A853 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(0 0 8px rgba(212,168,83,0.3))",
               }}
             >
               PHANTOM CAPITAL
