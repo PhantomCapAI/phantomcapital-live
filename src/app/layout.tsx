@@ -35,9 +35,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrains.variable} h-full antialiased dark`}
+      style={{ backgroundColor: "#0A0A0A", colorScheme: "dark" }}
     >
-      <body className="min-h-full flex flex-col bg-void text-white">
+      <body className="min-h-full flex flex-col bg-[#0A0A0A] text-white" style={{ backgroundColor: "#0A0A0A" }}>
         <WalletProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
