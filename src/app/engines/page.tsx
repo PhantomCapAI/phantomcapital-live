@@ -7,7 +7,7 @@ const ENGINES = [
     description:
       "Anti-slop content engine. Every piece scores 7+ or it doesn't ship. Blog, social, video scripts — all channels.",
     features: ["Content Feed", "Anti-Slop Scoring", "Multi-Channel"],
-    status: "Active",
+    status: "Deployed",
   },
   {
     name: "Digital Merchant",
@@ -15,7 +15,7 @@ const ENGINES = [
     description:
       "Affiliate revenue engine powering phantomcapital.live. Conversion optimization, heatmaps, and partner management.",
     features: ["Affiliate Tracking", "Revenue Analytics", "Conversion Optimization"],
-    status: "Active",
+    status: "Deployed",
   },
   {
     name: "Wellness Architect",
@@ -23,7 +23,7 @@ const ENGINES = [
     description:
       "DailyWisdomHub pipeline — curated wisdom, wellness content, and subscription management.",
     features: ["Daily Digest", "Subscription Tier", "Content Curation"],
-    status: "Active",
+    status: "Deployed",
   },
   {
     name: "SaaS Toolsmith",
@@ -31,7 +31,7 @@ const ENGINES = [
     description:
       "The build engine. Ships production-grade tools, skills, and marketplace products autonomously.",
     features: ["Skill Builder", "Auto-Deploy", "Marketplace Integration"],
-    status: "Active",
+    status: "Deployed",
     link: "/marketplace",
   },
 ];
@@ -53,7 +53,7 @@ export default function EnginesPage() {
           {ENGINES.map((engine) => (
             <div
               key={engine.name}
-              className="rounded-xl border border-border bg-surface/30 p-6 group"
+              className="rounded-xl border border-border border-l-2 border-l-[#D4A853] bg-surface/30 p-6 group hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.1)] transition-all"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-medium text-white">

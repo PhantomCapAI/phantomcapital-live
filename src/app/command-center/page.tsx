@@ -7,17 +7,10 @@ const PIPELINE_STEPS = [
 ];
 
 const RISK_GAUGES = [
-  { label: "Max Per Market", value: "10%", current: 10, max: 100 },
-  { label: "Total Exposure", value: "28%", current: 28, max: 40 },
-  { label: "Daily P&L", value: "-3.2%", current: 3.2, max: 10 },
-  { label: "Stop-Loss", value: "-15%", current: 15, max: 15 },
-];
-
-const WALLETS = [
-  { address: "0x7f2...a4c1", age: "2 days", status: "rejected" as const },
-  { address: "0x3d8...e912", age: "14 hours", status: "rejected" as const },
-  { address: "0xb1c...f723", age: "45 days", status: "passed" as const },
-  { address: "0x9e4...d156", age: "3 days", status: "rejected" as const },
+  { label: "Max Per Market", value: "\u2014", subtitle: "Awaiting live data" },
+  { label: "Total Exposure", value: "\u2014", subtitle: "Awaiting live data" },
+  { label: "Daily P&L", value: "\u2014", subtitle: "Awaiting live data" },
+  { label: "Stop-Loss", value: "-15%", subtitle: "Hard limit configured" },
 ];
 
 export default function CommandCenterPage() {
@@ -34,7 +27,7 @@ export default function CommandCenterPage() {
 
       {/* Trading Pipeline */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-16">
-        <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-6">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
           Trading Pipeline
         </h2>
         <div className="space-y-px rounded-xl overflow-hidden border border-border">
@@ -45,7 +38,7 @@ export default function CommandCenterPage() {
                 step.active ? "bg-surface/50" : "bg-surface/20 opacity-50"
               }`}
             >
-              <span className="font-mono text-sm text-gold-muted w-6 shrink-0">
+              <span className="font-mono text-sm text-[#D4A853] w-6 shrink-0">
                 {step.step}
               </span>
               <div className="flex-1">
@@ -62,43 +55,30 @@ export default function CommandCenterPage() {
 
       {/* Risk Gauges */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-16">
-        <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-6">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
           Risk Gauges
         </h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {RISK_GAUGES.map((gauge) => {
-            const pct = Math.min((gauge.current / gauge.max) * 100, 100);
-            const danger = pct > 80;
-            return (
-              <div
-                key={gauge.label}
-                className="rounded-xl border border-border bg-surface/30 p-5"
-              >
-                <p className="text-xs text-gray-dark mb-3">{gauge.label}</p>
-                <p className={`font-mono text-2xl font-semibold ${danger ? "text-red" : "text-white"}`}>
-                  {gauge.value}
-                </p>
-                <div className="mt-3 w-full h-1 rounded-full bg-border">
-                  <div
-                    className="h-full rounded-full transition-all"
-                    style={{
-                      width: `${pct}%`,
-                      backgroundColor: danger ? "#EF4444" : "#D4A853",
-                    }}
-                  />
-                </div>
-                <p className="text-[11px] text-gray-darker mt-2">
-                  Limit: {gauge.max}%
-                </p>
-              </div>
-            );
-          })}
+          {RISK_GAUGES.map((gauge) => (
+            <div
+              key={gauge.label}
+              className="rounded-xl border border-border bg-surface/30 p-5"
+            >
+              <p className="text-xs text-gray-dark mb-3">{gauge.label}</p>
+              <p className="font-mono text-2xl font-semibold text-[#D4A853]">
+                {gauge.value}
+              </p>
+              <p className="text-[11px] text-gray-darker mt-2">
+                {gauge.subtitle}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Wraith Suite */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-16">
-        <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-6">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
           Wraith Intelligence
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -108,7 +88,7 @@ export default function CommandCenterPage() {
             { name: "Arbitrage Scanner", desc: "Cross-venue detection" },
             { name: "Airdrop Scanner", desc: "Eligible position analysis" },
           ].map((w) => (
-            <div key={w.name} className="rounded-xl border border-border bg-surface/30 p-5">
+            <div key={w.name} className="rounded-xl border border-border bg-surface/30 p-5 hover:border-[#D4A853]/30 transition-colors">
               <h3 className="text-sm font-medium text-white mb-1">{w.name}</h3>
               <p className="text-xs text-gray-dark">{w.desc}</p>
             </div>
@@ -119,7 +99,7 @@ export default function CommandCenterPage() {
       {/* Wallet Filter */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 lg:px-8 py-16">
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-6">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
             Young Wallet Filter
           </h2>
           <div className="rounded-xl border border-border overflow-hidden">
@@ -132,19 +112,11 @@ export default function CommandCenterPage() {
                 </tr>
               </thead>
               <tbody>
-                {WALLETS.map((w, i) => (
-                  <tr key={i} className="border-b border-border last:border-0">
-                    <td className="px-5 py-3 font-mono text-xs text-gray">{w.address}</td>
-                    <td className="px-5 py-3 font-mono text-xs text-gray">{w.age}</td>
-                    <td className="px-5 py-3">
-                      <span className={`text-xs font-medium ${
-                        w.status === "passed" ? "text-green" : "text-red"
-                      }`}>
-                        {w.status === "passed" ? "Passed" : "Rejected"}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                <tr>
+                  <td colSpan={3} className="px-5 py-8 text-center text-sm text-gray-dark">
+                    No data yet &mdash; Sullivan awaiting deployment
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

@@ -40,7 +40,7 @@ export default function FleetPage() {
                 key={stage.step}
                 className="flex items-baseline gap-6 bg-surface/30 px-6 py-5"
               >
-                <span className="font-mono text-sm text-gold-muted w-6 shrink-0">
+                <span className="font-mono text-sm text-[#D4A853] w-6 shrink-0">
                   {stage.step}
                 </span>
                 <div>

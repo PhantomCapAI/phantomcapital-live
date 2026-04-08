@@ -3,28 +3,45 @@ import Link from "next/link";
 import { AGENTS } from "@/lib/agents";
 
 const METRICS = [
-  { label: "Phoebe Uptime", value: "99.7%", subtitle: "Since April 2026" },
+  { label: "Phoebe Uptime", value: "99.7%", subtitle: "Since Apr 2026" },
   { label: "Active Agents", value: "6", subtitle: "" },
   { label: "Revenue (MTD)", value: "$0", subtitle: "Pre-launch" },
-  { label: "Sullivan P&L", value: "—", subtitle: "Awaiting deployment" },
+  { label: "Sullivan P&L", value: "\u2014", subtitle: "Awaiting deployment" },
   { label: "Content Published", value: "0", subtitle: "Pre-launch" },
   { label: "Marketplace Skills", value: "0", subtitle: "Coming soon" },
 ];
+
+const PFP_MAP: Record<string, string> = {
+  phoebe: "/phoebe.png", loom: "/loom.png", claire: "/claire.png",
+  nova: "/nova.png", sullivan: "/sullivan.png", cipher: "/cipher.png",
+};
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-6 pt-24 pb-16 sm:pt-32 sm:pb-20">
-        <Image
-          src="/logo.jpg"
-          alt="Phantom Capital"
-          width={160}
-          height={160}
-          priority
-          className="rounded-2xl mb-10"
-        />
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-center">
+        {/* Logo with gold glow */}
+        <div className="relative mb-10">
+          <div className="absolute inset-0 rounded-2xl" style={{ boxShadow: "0 0 80px rgba(212,168,83,0.2), 0 0 160px rgba(212,168,83,0.1)" }} />
+          <Image
+            src="/logo.jpg"
+            alt="Phantom Capital"
+            width={160}
+            height={160}
+            priority
+            className="rounded-2xl relative"
+          />
+        </div>
+        {/* Gold gradient headline */}
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-center"
+          style={{
+            background: "linear-gradient(135deg, #D4A853 0%, #F5E6A3 50%, #D4A853 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           Phantom Capital
         </h1>
         <p className="mt-5 text-lg text-[#D4A853] text-center max-w-md">
@@ -32,11 +49,11 @@ export default function DashboardPage() {
         </p>
       </section>
 
-      {/* Genesis Banner */}
+      {/* Genesis Banner with shimmer */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-12">
         <Link
           href="https://genesis.phantomcapital.live"
-          className="block rounded-xl border border-[#D4A853]/40 bg-[#D4A853]/5 p-8 hover:border-[#D4A853]/60 hover:bg-[#D4A853]/8 transition-all duration-300 group"
+          className="block rounded-xl border border-[#D4A853]/40 bg-[#D4A853]/5 p-8 hover:bg-[#D4A853]/8 transition-all duration-300 group animate-[shimmer_3s_ease-in-out_infinite]"
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
@@ -79,17 +96,16 @@ export default function DashboardPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {AGENTS.map((agent) => {
-            const pfpMap: Record<string, string> = { phoebe: "/phoebe.png", loom: "/loom.png", claire: "/claire.png", nova: "/nova.png", sullivan: "/sullivan.png", cipher: "/cipher.png" };
-            const pfp = pfpMap[agent.id];
+            const pfp = PFP_MAP[agent.id];
             return (
               <div
                 key={agent.id}
-                className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4 hover:border-[#D4A853]/30 transition-colors"
+                className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.1)] transition-all"
               >
                 {pfp ? (
-                  <img src={pfp} alt={agent.name} className="w-8 h-8 rounded-full object-cover border border-[#D4A853]/40 shrink-0" />
+                  <img src={pfp} alt={agent.name} className="w-12 h-12 rounded-full object-cover border-2 border-[#D4A853]/50 shrink-0" />
                 ) : (
-                  <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#D4A853" }} />
+                  <div className="w-12 h-12 rounded-full bg-surface-light border-2 border-[#D4A853]/30 flex items-center justify-center text-sm font-mono text-[#D4A853] shrink-0">{agent.name[0]}</div>
                 )}
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">{agent.name}</p>
@@ -117,7 +133,7 @@ export default function DashboardPage() {
               <Link
                 key={engine.name}
                 href="/engines"
-                className="rounded-xl border border-border bg-surface/30 p-5 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.15)] transition-all group"
+                className="rounded-xl border-l-2 border-l-[#D4A853] border border-border bg-surface/30 p-5 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.15)] transition-all group"
               >
                 <h3 className="text-sm font-medium text-white group-hover:text-[#D4A853] transition-colors">
                   {engine.name}

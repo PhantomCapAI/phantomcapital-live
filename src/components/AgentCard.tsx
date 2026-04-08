@@ -20,10 +20,10 @@ export function AgentCard({ agent }: { agent: Agent }) {
             <img
               src={pfp}
               alt={agent.name}
-              className="w-10 h-10 rounded-full object-cover border border-[#D4A853]/50"
+              className="w-16 h-16 rounded-full object-cover border-2 border-[#D4A853]/50"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-surface-light border border-border flex items-center justify-center text-sm font-mono text-gray-dark">
+            <div className="w-16 h-16 rounded-full bg-surface-light border-2 border-[#D4A853]/30 flex items-center justify-center text-lg font-mono text-[#D4A853]">
               {agent.name[0]}
             </div>
           )}
