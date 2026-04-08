@@ -19,7 +19,7 @@ const ENGINES = [
   },
   {
     name: "Wellness Architect",
-    agent: "System",
+    agent: "Claire",
     description:
       "DailyWisdomHub pipeline — curated wisdom, wellness content, and subscription management.",
     features: ["Daily Digest", "Subscription Tier", "Content Curation"],

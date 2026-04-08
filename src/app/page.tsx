@@ -60,8 +60,8 @@ export default function DashboardPage() {
               <h2 className="text-2xl font-semibold text-[#D4A853]">
                 Phantom Genesis
               </h2>
-              <p className="text-sm text-gray mt-2 max-w-lg">
-                Watch 5 AI agents launch a token autonomously. Live now.
+              <p className="text-sm text-[#9CA3AF] mt-2 max-w-lg">
+                Watch the Swarm launch a token autonomously. Five agents deliberate. Phoebe orchestrates. Zero humans.
               </p>
             </div>
             <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4A853] text-black text-sm font-semibold rounded-lg group-hover:bg-[#c49a43] transition-colors shrink-0">
@@ -127,7 +127,7 @@ export default function DashboardPage() {
             {[
               { name: "Content Monolith", agent: "Claire", desc: "Anti-slop content at scale" },
               { name: "Digital Merchant", agent: "Nova", desc: "Affiliate revenue engine" },
-              { name: "Wellness Architect", agent: "System", desc: "DailyWisdomHub pipeline" },
+              { name: "Wellness Architect", agent: "Claire", desc: "DailyWisdomHub pipeline" },
               { name: "SaaS Toolsmith", agent: "Loom", desc: "Marketplace & agent skills" },
             ].map((engine) => (
               <Link
