@@ -31,7 +31,7 @@ export default function FleetPage() {
 
       <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 lg:px-8 py-20">
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-10">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-10">
             Phantom Pipeline
           </h2>
           <div className="space-y-px rounded-xl overflow-hidden border border-border">

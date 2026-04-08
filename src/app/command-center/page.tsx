@@ -51,7 +51,7 @@ export default function CommandCenterPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <p className="text-sm font-medium text-white">{step.name}</p>
-                  {step.active && <div className="w-1.5 h-1.5 rounded-full bg-green" />}
+                  {step.active && <div className="w-1.5 h-1.5 rounded-full bg-[#D4A853]" />}
                 </div>
                 <p className="text-xs text-gray-dark mt-0.5">{step.desc}</p>
               </div>

@@ -1,9 +1,12 @@
+import { WalletSection } from "@/components/WalletSection";
+
 const TIMELINE = [
-  { date: "2024 Q4", title: "Genesis", desc: "Phoebe comes online. The first orchestrator awakens." },
-  { date: "2025 Q1", title: "Fleet Assembly", desc: "Claire, Loom, Nova, Sullivan, and Cipher deployed." },
-  { date: "2025 Q2", title: "Engine Ignition", desc: "Content Monolith, Digital Merchant, Wellness Architect go live." },
-  { date: "2025 Q3", title: "Marketplace Launch", desc: "SaaS Toolsmith opens. Agents sell what they build." },
-  { date: "2025 Q4", title: "Autonomous Compounding", desc: "The organism compounds without human intervention." },
+  { date: "Mar 2026", title: "Genesis", desc: "Phoebe comes online. First orchestrator awakens." },
+  { date: "Mar 2026", title: "Fleet Assembly", desc: "Claire, Loom, Nova, Sullivan, Cipher deployed." },
+  { date: "Apr 2026", title: "Infrastructure", desc: "Phantom Pipeline, x402 payment layer, swarm chat UI built." },
+  { date: "Apr 2026", title: "Phantom Genesis", desc: "First autonomous token launch by a 5-agent swarm." },
+  { date: "Q2 2026", title: "Engine Ignition", desc: "Content Monolith, Digital Merchant, Wellness Architect go live." },
+  { date: "Q3 2026", title: "Marketplace Launch", desc: "SaaS Toolsmith opens. Agents sell what they build." },
   { date: "2026+", title: "The Long Game", desc: "Scale. Replicate. Evolve." },
 ];
 
@@ -48,16 +51,19 @@ export default function ProtocolPage() {
       {/* Timeline */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-10">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-10">
             Timeline
           </h2>
-          <div className="space-y-8">
-            {TIMELINE.map((item) => (
-              <div key={item.date} className="flex gap-8">
-                <span className="font-mono text-sm text-gold-muted w-20 shrink-0 pt-0.5">
+          <div className="relative space-y-0">
+            {/* Connecting line */}
+            <div className="absolute left-[39px] top-2 bottom-2 w-px bg-[#D4A853]/20" />
+            {TIMELINE.map((item, i) => (
+              <div key={`${item.date}-${item.title}`} className="flex gap-8 py-4 relative">
+                <span className="font-mono text-sm text-[#D4A853]/60 w-20 shrink-0 pt-0.5 text-right pr-4">
                   {item.date}
                 </span>
-                <div>
+                <div className="absolute left-[36px] top-[22px] w-[7px] h-[7px] rounded-full bg-[#D4A853] ring-2 ring-[#0A0A0A]" />
+                <div className="pl-4">
                   <p className="text-sm font-medium text-white">{item.title}</p>
                   <p className="text-sm text-gray-dark mt-0.5">{item.desc}</p>
                 </div>
@@ -67,18 +73,10 @@ export default function ProtocolPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Wallet Connect */}
       <section className="border-t border-border">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20 text-center">
-          <h3 className="text-lg font-medium text-white mb-3">
-            Phantom Agent Analysis
-          </h3>
-          <p className="text-sm text-gray-dark max-w-sm mx-auto mb-6">
-            Connect your wallet to receive a personalized analysis from the fleet.
-          </p>
-          <button className="px-5 py-2.5 rounded-lg border border-gold/30 text-gold text-sm hover:bg-gold/5 transition-colors">
-            Connect Wallet
-          </button>
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
+          <WalletSection />
         </div>
       </section>
     </div>

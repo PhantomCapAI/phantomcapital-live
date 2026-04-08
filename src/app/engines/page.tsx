@@ -60,7 +60,7 @@ export default function EnginesPage() {
                   {engine.name}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green" />
+                  <div className="w-2 h-2 rounded-full bg-[#D4A853]" />
                   <span className="text-xs text-gray-dark">{engine.status}</span>
                 </div>
               </div>

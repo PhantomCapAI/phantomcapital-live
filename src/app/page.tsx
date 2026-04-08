@@ -3,19 +3,19 @@ import Link from "next/link";
 import { AGENTS } from "@/lib/agents";
 
 const METRICS = [
-  { label: "Phoebe Uptime", value: "99.7%", mono: true },
-  { label: "Active Agents", value: "6", mono: true },
-  { label: "Revenue (MTD)", value: "$2,140", mono: true },
-  { label: "Sullivan P&L", value: "+$4,870", mono: true },
-  { label: "Content Published", value: "89", mono: true },
-  { label: "Marketplace Skills", value: "14", mono: true },
+  { label: "Phoebe Uptime", value: "99.7%", subtitle: "Since April 2026" },
+  { label: "Active Agents", value: "6", subtitle: "" },
+  { label: "Revenue (MTD)", value: "$0", subtitle: "Pre-launch" },
+  { label: "Sullivan P&L", value: "—", subtitle: "Awaiting deployment" },
+  { label: "Content Published", value: "0", subtitle: "Pre-launch" },
+  { label: "Marketplace Skills", value: "0", subtitle: "Coming soon" },
 ];
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+      <section className="flex flex-col items-center justify-center px-6 pt-24 pb-16 sm:pt-32 sm:pb-20">
         <Image
           src="/logo.jpg"
           alt="Phantom Capital"
@@ -27,9 +27,32 @@ export default function DashboardPage() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-center">
           Phantom Capital
         </h1>
-        <p className="mt-5 text-lg text-gray text-center max-w-md">
+        <p className="mt-5 text-lg text-[#D4A853] text-center max-w-md">
           Autonomous AI agents compounding capital.
         </p>
+      </section>
+
+      {/* Genesis Banner */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-12">
+        <Link
+          href="https://genesis.phantomcapital.live"
+          className="block rounded-xl border border-[#D4A853]/40 bg-[#D4A853]/5 p-8 hover:border-[#D4A853]/60 hover:bg-[#D4A853]/8 transition-all duration-300 group"
+        >
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold text-[#D4A853]">
+                Phantom Genesis
+              </h2>
+              <p className="text-sm text-gray mt-2 max-w-lg">
+                Watch 5 AI agents launch a token autonomously. Live now.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D4A853] text-black text-sm font-semibold rounded-lg group-hover:bg-[#c49a43] transition-colors shrink-0">
+              Watch the Swarm
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+          </div>
+        </Link>
       </section>
 
       {/* Metrics */}
@@ -37,10 +60,13 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-border rounded-xl overflow-hidden border border-border">
           {METRICS.map((m) => (
             <div key={m.label} className="bg-void px-5 py-6 text-center">
-              <p className="font-mono text-2xl font-semibold text-white">
+              <p className="font-mono text-2xl font-semibold text-[#D4A853]">
                 {m.value}
               </p>
               <p className="mt-1.5 text-xs text-gray-dark">{m.label}</p>
+              {m.subtitle && (
+                <p className="mt-0.5 text-[10px] text-gray-darker">{m.subtitle}</p>
+              )}
             </div>
           ))}
         </div>
@@ -48,18 +74,18 @@ export default function DashboardPage() {
 
       {/* Agent Roster */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
-        <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-8">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-8">
           Agent Fleet
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {AGENTS.map((agent) => (
             <div
               key={agent.id}
-              className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4"
+              className="rounded-xl border border-border bg-surface/50 px-5 py-4 flex items-center gap-4 hover:border-[#D4A853]/30 transition-colors"
             >
               <div
                 className="w-2 h-2 rounded-full shrink-0"
-                style={{ backgroundColor: agent.status === "active" ? "#22C55E" : "#6B7280" }}
+                style={{ backgroundColor: agent.status === "active" ? "#D4A853" : "#6B7280" }}
               />
               <div className="min-w-0">
                 <p className="text-sm font-medium text-white truncate">
@@ -75,7 +101,7 @@ export default function DashboardPage() {
       {/* Engines quick links */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 lg:px-8 py-20">
-          <h2 className="text-xs font-semibold tracking-[0.2em] text-gray-dark uppercase mb-8">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-8">
             Active Engines
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -88,9 +114,9 @@ export default function DashboardPage() {
               <Link
                 key={engine.name}
                 href="/engines"
-                className="rounded-xl border border-border bg-surface/30 p-5 hover:border-border-light transition-colors group"
+                className="rounded-xl border border-border bg-surface/30 p-5 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.15)] transition-all group"
               >
-                <h3 className="text-sm font-medium text-white group-hover:text-gold transition-colors">
+                <h3 className="text-sm font-medium text-white group-hover:text-[#D4A853] transition-colors">
                   {engine.name}
                 </h3>
                 <p className="text-xs text-gray-dark mt-1">{engine.desc}</p>

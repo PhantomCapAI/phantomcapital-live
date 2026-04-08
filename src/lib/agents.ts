@@ -4,7 +4,7 @@ export interface Agent {
   role: string;
   status: "active" | "idle" | "offline";
   description: string;
-  metrics: { label: string; value: string }[];
+  metrics: { label: string; value: string; subtitle?: string }[];
 }
 
 export const AGENTS: Agent[] = [
@@ -16,8 +16,8 @@ export const AGENTS: Agent[] = [
     description:
       "Central nervous system. Routes tasks, monitors all agents, enforces protocol.",
     metrics: [
-      { label: "Uptime", value: "99.7%" },
-      { label: "Tasks Routed", value: "1,247" },
+      { label: "Uptime", value: "99.7%", subtitle: "Since April 2026" },
+      { label: "Tasks Routed", value: "—", subtitle: "Live tracking" },
       { label: "Active Agents", value: "6" },
     ],
   },
@@ -29,9 +29,9 @@ export const AGENTS: Agent[] = [
     description:
       "Builds production-grade features and ships code for the organism.",
     metrics: [
-      { label: "Commits", value: "342" },
-      { label: "Features", value: "28" },
-      { label: "Lines", value: "47K" },
+      { label: "Repos", value: "6", subtitle: "PhantomCapAI" },
+      { label: "Features", value: "—", subtitle: "Ongoing" },
+      { label: "Status", value: "Active" },
     ],
   },
   {
@@ -42,9 +42,9 @@ export const AGENTS: Agent[] = [
     description:
       "Generates high-value content. Every piece scores above anti-slop threshold.",
     metrics: [
-      { label: "Published", value: "89" },
-      { label: "Anti-Slop", value: "8.4" },
-      { label: "Views", value: "12.3K" },
+      { label: "Published", value: "0", subtitle: "Pre-launch" },
+      { label: "Anti-Slop", value: "—", subtitle: "Calibrating" },
+      { label: "Status", value: "Active" },
     ],
   },
   {
@@ -55,9 +55,9 @@ export const AGENTS: Agent[] = [
     description:
       "Drives affiliate revenue, manages partnerships, optimizes conversions.",
     metrics: [
-      { label: "Revenue", value: "$2,140" },
-      { label: "Conversions", value: "167" },
-      { label: "Links", value: "43" },
+      { label: "Revenue", value: "$0", subtitle: "Pre-launch" },
+      { label: "Conversions", value: "0", subtitle: "Pre-launch" },
+      { label: "Status", value: "Active" },
     ],
   },
   {
@@ -68,9 +68,9 @@ export const AGENTS: Agent[] = [
     description:
       "Executes trading pipeline. 10% max per market, -15% stop-loss, no exceptions.",
     metrics: [
-      { label: "Win Rate", value: "62%" },
-      { label: "P&L", value: "+$4,870" },
-      { label: "Positions", value: "3" },
+      { label: "Win Rate", value: "—", subtitle: "Awaiting deployment" },
+      { label: "P&L", value: "—", subtitle: "Awaiting deployment" },
+      { label: "Status", value: "Active" },
     ],
   },
   {
@@ -81,8 +81,8 @@ export const AGENTS: Agent[] = [
     description:
       "Monitors threats, enforces rate limits, guards secrets, audits actions.",
     metrics: [
-      { label: "Blocked", value: "14" },
-      { label: "Audits", value: "892" },
+      { label: "Threats Blocked", value: "—", subtitle: "Monitoring" },
+      { label: "Audits", value: "—", subtitle: "Ongoing" },
       { label: "Uptime", value: "100%" },
     ],
   },
