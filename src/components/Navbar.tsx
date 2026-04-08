@@ -30,7 +30,7 @@ export function Navbar() {
               height={32}
               className="rounded"
             />
-            <span className="text-sm font-semibold tracking-[0.2em] text-white">
+            <span className="text-sm font-semibold tracking-[0.2em] text-[#D4A853]">
               PHANTOM CAPITAL
             </span>
           </Link>

@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#0A0A0A] text-white" style={{ backgroundColor: "#0A0A0A" }}>
         <WalletProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 bg-[#0A0A0A]">{children}</main>
           <Footer />
         </WalletProvider>
       </body>
