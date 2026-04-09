@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/command-center", label: "Command Center" },
   { href: "/marketplace", label: "Marketplace" },
   { href: "/protocol", label: "Protocol" },
+  { href: "/protocol/gold-paper", label: "Gold Paper" },
 ] as const;
 
 export function Navbar() {
