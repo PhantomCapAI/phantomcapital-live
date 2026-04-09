@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { WalletButton } from "./WalletButton";
 
 const NAV_ITEMS = [
   { href: "/", label: "Dashboard" },
@@ -60,6 +61,10 @@ export function Navbar() {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="hidden md:block">
+            <WalletButton />
           </div>
 
           <button

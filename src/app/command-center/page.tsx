@@ -7,9 +7,9 @@ const PIPELINE_STEPS = [
 ];
 
 const RISK_GAUGES = [
-  { label: "Max Per Market", value: "\u2014", subtitle: "Awaiting live data" },
-  { label: "Total Exposure", value: "\u2014", subtitle: "Awaiting live data" },
-  { label: "Daily P&L", value: "\u2014", subtitle: "Awaiting live data" },
+  { label: "Max Per Market", value: "\u2014", subtitle: "Pre-launch" },
+  { label: "Total Exposure", value: "\u2014", subtitle: "Pre-launch" },
+  { label: "Daily P&L", value: "\u2014", subtitle: "Pre-launch" },
   { label: "Stop-Loss", value: "-15%", subtitle: "Hard limit configured" },
 ];
 

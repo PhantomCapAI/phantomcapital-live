@@ -73,8 +73,50 @@ export default function ProtocolPage() {
         </div>
       </section>
 
+      {/* x402 Pricing */}
+      <section className="border-t border-[#1F1F1F]">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
+          <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
+            x402 Micropayment Pricing
+          </h2>
+          <p className="text-sm text-[#9CA3AF] mb-8">
+            Every agent service is gated by x402 micropayments on Solana. Pay per call in USDC.
+          </p>
+          <div className="rounded-xl border border-[#1F1F1F] overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-[#1F1F1F] bg-[#111111]/50">
+                  <th className="text-left px-5 py-3 text-xs text-[#6B7280] font-medium">Endpoint</th>
+                  <th className="text-left px-5 py-3 text-xs text-[#6B7280] font-medium">Price</th>
+                  <th className="text-left px-5 py-3 text-xs text-[#6B7280] font-medium">Agent</th>
+                </tr>
+              </thead>
+              <tbody className="text-[#9CA3AF]">
+                {[
+                  ["/swarm/message", "$0.001", "Phoebe"],
+                  ["/swarm/session", "$0.05", "Phoebe"],
+                  ["/bags/launch", "$0.50", "Loom"],
+                  ["/loom/build", "$0.10", "Loom"],
+                  ["/phoebe/orchestrate", "$0.05", "Phoebe"],
+                  ["/sullivan/signal", "$0.02", "Mr. Sullivan"],
+                ].map(([ep, price, agent]) => (
+                  <tr key={ep} className="border-b border-[#1F1F1F] last:border-0">
+                    <td className="px-5 py-3 font-mono text-xs">{ep}</td>
+                    <td className="px-5 py-3 font-mono text-xs text-[#D4A853]">{price}</td>
+                    <td className="px-5 py-3 text-xs">{agent}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-[#4B5563] mt-4">
+            Treasury: CGzf9...ekVc &middot; All payments in USDC on Solana mainnet
+          </p>
+        </div>
+      </section>
+
       {/* Wallet Connect */}
-      <section className="border-t border-border">
+      <section className="border-t border-[#1F1F1F]">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 py-20">
           <WalletSection />
         </div>

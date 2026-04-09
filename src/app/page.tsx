@@ -8,7 +8,7 @@ const METRICS = [
   { label: "Revenue (MTD)", value: "$0", subtitle: "Pre-launch" },
   { label: "Sullivan P&L", value: "\u2014", subtitle: "Awaiting deployment" },
   { label: "Content Published", value: "0", subtitle: "Pre-launch" },
-  { label: "Marketplace Skills", value: "0", subtitle: "Launching with Genesis" },
+  { label: "Active Skills", value: "4", subtitle: "x402 gated" },
 ];
 
 const PFP_MAP: Record<string, string> = {
@@ -70,6 +70,21 @@ export default function DashboardPage() {
             </span>
           </div>
         </Link>
+      </section>
+
+      {/* Security badges */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-8">
+        <div className="flex flex-wrap justify-center gap-3">
+          {[
+            { icon: "\u{1F512}", text: "x402 Secured" },
+            { icon: "\u{1F6E1}", text: "Non-custodial wallet" },
+            { icon: "\u{1F441}", text: "Monitored by Cipher" },
+          ].map((b) => (
+            <span key={b.text} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#D4A853]/20 bg-[#111111] text-[10px] text-[#9CA3AF]">
+              <span>{b.icon}</span> {b.text}
+            </span>
+          ))}
+        </div>
       </section>
 
       {/* Metrics */}

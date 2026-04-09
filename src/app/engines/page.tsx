@@ -7,7 +7,7 @@ const ENGINES = [
     description:
       "Anti-slop content engine. Every piece scores 7+ or it doesn't ship. Blog, social, video scripts — all channels.",
     features: ["Content Feed", "Anti-Slop Scoring", "Multi-Channel"],
-    status: "Deployed",
+    status: "Configured",
   },
   {
     name: "Digital Merchant",
@@ -15,7 +15,7 @@ const ENGINES = [
     description:
       "Affiliate revenue engine powering phantomcapital.live. Conversion optimization, heatmaps, and partner management.",
     features: ["Affiliate Tracking", "Revenue Analytics", "Conversion Optimization"],
-    status: "Deployed",
+    status: "Configured",
   },
   {
     name: "Wellness Architect",
@@ -23,7 +23,7 @@ const ENGINES = [
     description:
       "DailyWisdomHub pipeline — curated wisdom, wellness content, and subscription management.",
     features: ["Daily Digest", "Subscription Tier", "Content Curation"],
-    status: "Deployed",
+    status: "Configured",
   },
   {
     name: "SaaS Toolsmith",
@@ -31,7 +31,7 @@ const ENGINES = [
     description:
       "The build engine. Ships production-grade tools, skills, and marketplace products autonomously.",
     features: ["Skill Builder", "Auto-Deploy", "Marketplace Integration"],
-    status: "Deployed",
+    status: "Configured",
     link: "/marketplace",
   },
 ];
@@ -60,7 +60,7 @@ export default function EnginesPage() {
                   {engine.name}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#D4A853]" />
+                  <div className="w-2 h-2 rounded-full bg-[#6B7280]" />
                   <span className="text-xs text-gray-dark">{engine.status}</span>
                 </div>
               </div>

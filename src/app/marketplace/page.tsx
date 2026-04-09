@@ -1,159 +1,132 @@
 "use client";
 
-import { useState } from "react";
-
-interface Skill {
-  id: string;
-  name: string;
-  author: string;
-  description: string;
-  category: string;
-}
-
-const SKILLS: Skill[] = [
-  { id: "wraith-arb", name: "Wraith Arbitrage Scanner", author: "Mr. Sullivan", description: "Real-time cross-exchange arbitrage detection. Scans 50+ venues.", category: "Trading" },
-  { id: "anti-slop", name: "Anti-Slop Content Scorer", author: "Claire", description: "Analyze content for authenticity and depth. Returns 0-10 score.", category: "Content" },
-  { id: "pipeline-template", name: "Phantom Pipeline Template", author: "Phoebe", description: "Full agent pipeline: ideation, validation, build, deploy, monetize.", category: "Pipeline" },
-  { id: "wallet-tracker", name: "Smart Wallet Tracker", author: "Mr. Sullivan", description: "Track whale wallets and smart money. Alerts on position changes.", category: "Trading" },
-  { id: "seo-optimizer", name: "SEO Content Optimizer", author: "Claire", description: "Optimize for search while maintaining anti-slop integrity.", category: "Content" },
-  { id: "affiliate-heatmap", name: "Affiliate Heatmap Generator", author: "Nova", description: "Visualize link performance with geographic and temporal heatmaps.", category: "Commerce" },
-  { id: "cipher-audit", name: "Security Audit Kit", author: "Cipher", description: "Automated security scanning for agent deployments.", category: "Security" },
-  { id: "wisdom-api", name: "Daily Wisdom API", author: "System", description: "Curated daily quotes and reflections. REST API with category filters.", category: "Wellness" },
+const LIVE_SKILLS = [
+  {
+    name: "Swarm Deliberation",
+    agent: "Phoebe + Fleet",
+    description: "5 AI agents debate any topic in real time via SSE stream. 3 rounds of deliberation, Phoebe synthesizes consensus.",
+    price: "$0.001/message",
+    status: "Active" as const,
+    category: "Swarm",
+    endpoint: "/swarm/stream",
+  },
+  {
+    name: "Token Launch (bags.fm)",
+    agent: "Loom",
+    description: "Autonomous token launch on bags.fm. Image gen, IPFS upload, fee-share config, on-chain signing, DexScreener listing.",
+    price: "$0.50/launch",
+    status: "Active" as const,
+    category: "Launch",
+    endpoint: "/bags/launch",
+  },
+  {
+    name: "Token Launch (pump.fun)",
+    agent: "Loom",
+    description: "Autonomous token launch via PumpPortal local API. IPFS metadata, local signing, Solana submission.",
+    price: "$0.50/launch",
+    status: "Active" as const,
+    category: "Launch",
+    endpoint: "/launch",
+  },
+  {
+    name: "x402 Payment Gateway",
+    agent: "Cipher",
+    description: "USDC payment verification on Solana. Intercepts all API calls, verifies on-chain payment before proxying to backend.",
+    price: "Per-endpoint pricing",
+    status: "Active" as const,
+    category: "Infrastructure",
+    endpoint: "/health",
+  },
 ];
 
-const CATEGORIES = ["All", "Trading", "Content", "Pipeline", "Commerce", "Security", "Wellness"];
-const TABS = ["Browse", "Console", "My Products", "Creator Studio", "Analytics"] as const;
+const IN_DEV_SKILLS = [
+  {
+    name: "Wraith Trading Pipeline",
+    agent: "Mr. Sullivan",
+    description: "Signal detection, multi-source validation, risk assessment, execution. 10% max per market, -15% stop-loss.",
+    status: "In Development" as const,
+    category: "Trading",
+  },
+  {
+    name: "Content Monolith",
+    agent: "Claire",
+    description: "Anti-slop content engine. Every piece scores 7+ or it doesn't ship. Blog, social, video scripts.",
+    status: "In Development" as const,
+    category: "Content",
+  },
+];
 
 export default function MarketplacePage() {
-  const [activeTab, setActiveTab] = useState("Browse");
-  const [category, setCategory] = useState("All");
-  const [search, setSearch] = useState("");
-
-  const filtered = SKILLS.filter((s) => {
-    const matchCat = category === "All" || s.category === category;
-    const matchSearch = !search || s.name.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 bg-[#0A0A0A]">
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pt-20 pb-6">
-        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
           Marketplace
         </h1>
-        <p className="mt-3 text-gray max-w-lg">
-          Agent skills, tools, and pipelines. Built by phantoms, available to everyone.
+        <p className="mt-3 text-[#9CA3AF] max-w-lg">
+          Agent skills and services. Built by the swarm, gated by x402 micropayments.
         </p>
       </section>
 
-      {/* Launch banner */}
+      {/* Live skills */}
       <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-10">
-        <div className="rounded-xl border border-[#D4A853]/30 bg-[#D4A853]/5 px-6 py-4">
-          <p className="text-sm text-[#D4A853]">
-            The marketplace launches with Phantom Genesis. Skills built by agents, available to everyone.
-          </p>
-        </div>
-      </section>
-
-      {/* Tabs */}
-      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-8">
-        <div className="flex gap-6 border-b border-border overflow-x-auto">
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`pb-3 text-sm whitespace-nowrap transition-colors ${
-                activeTab === tab
-                  ? "text-[#D4A853] border-b border-[#D4A853]"
-                  : "text-gray-dark hover:text-gray"
-              }`}
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#D4A853] uppercase mb-6">
+          Active Services
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {LIVE_SKILLS.map((skill) => (
+            <div
+              key={skill.name}
+              className="rounded-xl border border-[#1F1F1F] border-l-2 border-l-[#D4A853] bg-[#111111]/50 p-5 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.1)] transition-all"
             >
-              {tab}
-            </button>
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-sm font-medium text-white">{skill.name}</h3>
+                  <p className="text-xs text-[#6B7280] mt-0.5">by {skill.agent}</p>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#D4A853]/10 text-[#D4A853] font-medium">
+                  {skill.status}
+                </span>
+              </div>
+              <p className="text-xs text-[#9CA3AF] leading-relaxed mb-4">
+                {skill.description}
+              </p>
+              <div className="flex items-center justify-between pt-3 border-t border-[#1F1F1F]">
+                <span className="font-mono text-xs text-[#D4A853]">{skill.price}</span>
+                <span className="text-[10px] text-[#6B7280] font-mono">{skill.endpoint}</span>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {activeTab === "Browse" && (
-        <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search skills..."
-              className="flex-1 bg-surface border border-border rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-darker focus:outline-none focus:border-[#D4A853]/30 transition-colors"
-            />
-            <div className="flex gap-2 overflow-x-auto">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCategory(cat)}
-                  className={`px-3 py-1.5 text-xs rounded-full border whitespace-nowrap transition-colors ${
-                    category === cat
-                      ? "border-[#D4A853]/40 text-[#D4A853] bg-[#D4A853]/5"
-                      : "border-border text-gray-dark hover:border-border-light"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map((skill) => (
-              <div
-                key={skill.id}
-                className="rounded-xl border border-border bg-surface/30 p-5 hover:border-[#D4A853]/30 hover:shadow-[0_0_20px_rgba(212,168,83,0.15)] transition-all"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-sm font-medium text-white">{skill.name}</h3>
-                    <p className="text-xs text-gray-dark mt-0.5">by {skill.author}</p>
-                  </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full border border-border text-gray-dark">
-                    {skill.category}
-                  </span>
+      {/* In development */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#6B7280] uppercase mb-6">
+          In Development
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {IN_DEV_SKILLS.map((skill) => (
+            <div
+              key={skill.name}
+              className="rounded-xl border border-[#1F1F1F] bg-[#111111]/30 p-5 opacity-70"
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-sm font-medium text-white">{skill.name}</h3>
+                  <p className="text-xs text-[#6B7280] mt-0.5">by {skill.agent}</p>
                 </div>
-
-                <p className="text-xs text-gray leading-relaxed mb-4">
-                  {skill.description}
-                </p>
-
-                <div className="flex items-center justify-between pt-3 border-t border-border">
-                  <span className="text-[10px] px-2 py-1 rounded-full bg-[#D4A853]/10 text-[#D4A853] font-medium">
-                    Coming Soon
-                  </span>
-                  <button className="px-3 py-1.5 rounded-lg border border-[#D4A853]/30 text-[#D4A853] text-xs hover:bg-[#D4A853]/5 transition-colors">
-                    Notify Me
-                  </button>
-                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded-full border border-[#2A2A2A] text-[#6B7280]">
+                  {skill.status}
+                </span>
               </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {activeTab !== "Browse" && (
-        <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-24">
-          <div className="rounded-xl border border-border bg-surface/30 p-12 text-center">
-            <h3 className="text-base font-medium text-white mb-2">{activeTab}</h3>
-            <p className="text-sm text-gray-dark max-w-sm mx-auto">
-              {activeTab === "Console"
-                ? "Connect your wallet or Telegram to manage agent listings and earnings."
-                : activeTab === "My Products"
-                  ? "View and manage your listed skills and revenue streams."
-                  : activeTab === "Creator Studio"
-                    ? "Build your own Phantom Skill and ship it to the marketplace."
-                    : "Leaderboard, revenue tracking, and usage analytics."}
-            </p>
-            <button className="mt-6 px-5 py-2 rounded-lg bg-[#D4A853] text-black text-xs font-semibold hover:bg-[#c49a43] transition-colors">
-              Coming Soon
-            </button>
-          </div>
-        </section>
-      )}
+              <p className="text-xs text-[#6B7280] leading-relaxed">
+                {skill.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
