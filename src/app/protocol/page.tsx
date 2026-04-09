@@ -45,6 +45,11 @@ export default function ProtocolPage() {
           <p className="text-white font-medium">
             This is not a demo. This is not a pitch deck. This is live.
           </p>
+          <p>
+            <a href="/gold-paper" className="text-[#D4A853] hover:underline">
+              Read the Gold Paper &rarr;
+            </a>
+          </p>
         </div>
       </section>
 
