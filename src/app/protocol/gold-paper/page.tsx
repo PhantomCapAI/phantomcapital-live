@@ -48,7 +48,7 @@ export default function GoldPaperPage() {
           <p>
             The thesis is simple and it’s the only one that matters: autonomous revenue beats fundraising.
             Every dollar raised comes with strings. Every dollar earned comes with freedom. VCs want
-            a deck. We want a P&L. The organism either feeds itself or dies honestly — there is no
+            a deck. We want a P{"&"}L. The organism either feeds itself or dies honestly — there is no
             third option where we pretend growth is around the corner while burning someone else’s money.
           </p>
           <p>
