@@ -57,15 +57,24 @@ body {
   border-radius: 2px;
 }
 
-/* Nuclear nav color fix — overrides all Tailwind/theme clobbering */
-nav a {
+/* Nuclear nav color fix */
+nav a,
+nav a:link,
+nav a:visited,
+header nav a,
+.fixed nav a {
   color: #9CA3AF !important;
-  transition: color 0.2s;
+  transition: color 0.2s !important;
 }
-nav a:hover {
+nav a:hover,
+header nav a:hover,
+.fixed nav a:hover {
   color: #D4A853 !important;
 }
-nav a[data-active="true"] {
+nav a[data-active="true"],
+nav a[data-active="true"]:link,
+nav a[data-active="true"]:visited,
+header nav a[data-active="true"] {
   color: #D4A853 !important;
 }
 
