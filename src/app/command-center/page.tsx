@@ -25,6 +25,13 @@ const SERVICES = [
   { name: "pump.fun Launcher", agent: "Loom", url: "https://phantom-pump-launch.zeabur.app/health", mode: "live" },
 ];
 
+const POLY_FLEET = [
+  { name: "Phantom Shadow", agent: "Sullivan", mode: "paper" },
+  { name: "Phantom Strike", agent: "Sullivan", mode: "paper" },
+  { name: "Phantom Sight", agent: "Sullivan", mode: "paper" },
+  { name: "Phantom Pulse", agent: "Sullivan", mode: "paper" },
+];
+
 function ServiceRow({ name, agent, url, mode }: { name: string; agent: string; url: string; mode: string }) {
   const [status, setStatus] = useState<"checking" | "online" | "offline">("checking");
 
@@ -72,6 +79,27 @@ export default function CommandCenterPage() {
         <div className="rounded-xl border border-[#1F1F1F] overflow-hidden">
           {SERVICES.map((s) => (
             <ServiceRow key={s.name} {...s} />
+          ))}
+        </div>
+      </section>
+
+      {/* Polymarket Fleet */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 pb-16">
+        <h2 className="text-xs font-semibold tracking-[0.2em] text-[#6B7280] uppercase mb-6">
+          Polymarket Fleet — Paper Mode
+        </h2>
+        <div className="rounded-xl border border-[#1F1F1F] overflow-hidden">
+          {POLY_FLEET.map((s) => (
+            <div key={s.name} className="flex items-center gap-4 py-3 px-4 border-b border-[#1F1F1F] last:border-0">
+              <div className="w-2 h-2 rounded-full shrink-0 bg-[#D4A853]" />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm text-white truncate">{s.name}</p>
+                <p className="text-[10px] text-[#6B7280]">{s.agent} · {s.mode}</p>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-[#D4A853]/20 text-[#D4A853]">
+                paper
+              </span>
+            </div>
           ))}
         </div>
       </section>

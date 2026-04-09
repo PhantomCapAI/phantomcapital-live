@@ -142,7 +142,10 @@ export default function MarketplacePage() {
                     <h3 className="text-sm font-medium text-white">{skill.name}</h3>
                     <p className="text-xs text-[#6B7280] mt-0.5">by {skill.agent}</p>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#D4A853]/10 text-[#D4A853] font-medium">{skill.status}</span>
+                  <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-[#22C55E]/10 text-[#22C55E] font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
+                    {skill.status}
+                  </span>
                 </div>
                 <p className="text-xs text-[#9CA3AF] leading-relaxed mb-4">{skill.description}</p>
                 <div className="flex items-center justify-between pt-3 border-t border-[#1F1F1F]">
