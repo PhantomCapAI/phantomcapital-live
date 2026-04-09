@@ -50,14 +50,12 @@ export function Navbar() {
                 <Link
                   key={href}
                   href={href}
-                  className="relative text-[13px] tracking-wide py-5 transition-colors duration-200"
-                  style={{ color: active ? "#D4A853" : "#9CA3AF" }}
-                  onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = "#D4A853"; }}
-                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = "#9CA3AF"; }}
+                  data-active={active ? "true" : undefined}
+                  className="relative text-[13px] tracking-wide py-5"
                 >
                   {label}
                   {active && (
-                    <span className="absolute bottom-0 left-0 right-0 h-px" style={{ backgroundColor: "#D4A853" }} />
+                    <span className="absolute bottom-0 left-0 right-0 h-px bg-[#D4A853]" />
                   )}
                 </Link>
               );
@@ -93,8 +91,8 @@ export function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
+                  data-active={active ? "true" : undefined}
                   className="block py-2.5 text-sm"
-                  style={{ color: active ? "#D4A853" : "#9CA3AF" }}
                 >
                   {label}
                 </Link>

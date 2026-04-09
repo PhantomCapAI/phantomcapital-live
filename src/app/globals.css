@@ -57,6 +57,18 @@ body {
   border-radius: 2px;
 }
 
+/* Nuclear nav color fix — overrides all Tailwind/theme clobbering */
+nav a {
+  color: #9CA3AF !important;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #D4A853 !important;
+}
+nav a[data-active="true"] {
+  color: #D4A853 !important;
+}
+
 @keyframes shimmer {
   0% { border-color: rgba(212,168,83,0.3); }
   50% { border-color: rgba(212,168,83,0.7); }
