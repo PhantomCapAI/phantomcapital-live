@@ -8,7 +8,7 @@ const METRICS = [
   { label: "Revenue (MTD)", value: "$0", subtitle: "Pre-launch" },
   { label: "Sullivan P&L", value: "\u2014", subtitle: "Awaiting deployment" },
   { label: "Content Published", value: "0", subtitle: "Pre-launch" },
-  { label: "Marketplace Skills", value: "0", subtitle: "Coming soon" },
+  { label: "Marketplace Skills", value: "0", subtitle: "Launching with Genesis" },
 ];
 
 const PFP_MAP: Record<string, string> = {
