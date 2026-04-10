@@ -18,8 +18,9 @@ const RISK_GAUGES = [
 ];
 
 const SERVICES = [
-  { name: "Phoebe (Hermes)", agent: "Phoebe", url: "https://phantom-swarm-engine.zeabur.app/health", mode: "live" },
+  { name: "Phoebe (Hermes)", agent: "Phoebe", url: "https://phantom-pipeline.zeabur.app/health", mode: "live" },
   { name: "Swarm Engine", agent: "Phoebe", url: "https://phantom-swarm-engine.zeabur.app/health", mode: "live" },
+  { name: "Content Pipeline", agent: "Claire", url: "https://phantom-pipeline.zeabur.app/health", mode: "live" },
   { name: "x402 Payment Gate", agent: "Cipher", url: "https://phantom-x402-gate.zeabur.app/health", mode: "live" },
   { name: "bags.fm Launcher", agent: "Loom", url: "https://phantom-bags-launch.zeabur.app/health", mode: "live" },
   { name: "pump.fun Launcher", agent: "Loom", url: "https://phantom-pump-launch.zeabur.app/health", mode: "live" },
@@ -37,8 +38,9 @@ function ServiceRow({ name, agent, url, mode }: { name: string; agent: string; u
 
   useEffect(() => {
     const ctrl = new AbortController();
-    fetch(url, { signal: ctrl.signal, mode: "cors" })
-      .then((r) => setStatus(r.ok ? "online" : "offline"))
+    fetch(`/api/health?url=${encodeURIComponent(url)}`, { signal: ctrl.signal })
+      .then((r) => r.json())
+      .then((d) => setStatus(d.status === "online" ? "online" : "offline"))
       .catch(() => setStatus("offline"));
     return () => ctrl.abort();
   }, [url]);
