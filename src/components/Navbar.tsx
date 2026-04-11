@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { href: "/marketplace", label: "Marketplace" },
   { href: "/protocol", label: "Protocol" },
   { href: "/protocol/gold-paper", label: "Gold Paper" },
+  { href: "/skills", label: "Skills" },
 ] as const;
 
 export function Navbar() {
